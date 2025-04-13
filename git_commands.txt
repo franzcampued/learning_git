@@ -309,3 +309,56 @@ Make changes, commit
 Push to your fork
 Create a Pull Request to original repo
 Sync your fork with upstream regularly
+
+-------------
+When Can You Safely Use git push Directly?
+1. Your local branch is already tracking a remote branch
+- You cloned a repo that already has upstream tracking.
+- You previously ran: git checkout -b [branch e.g feature/api-update] and git push -u origin [branch e.g feature/api-update]
+
+2. You’re on an existing branch that’s already linked to a remote -- Like the main branch you cloned main usually tracks origin/main automatically.
+
+If you're ever unsure — just test safely by running:
+git remote -v
+git branch -vv
+
+
+-------------
+Branch Naming
+
+Type	            Prefix	            Example	Use For
+Feature	            feature/	        feature/dwh-sales-pipeline	New data pipelines, scripts, dashboards, models
+Bugfix	            bugfix/ or fix/	    bugfix/fix-null-values-in-orders	Fixing data issues, ETL failures, broken reports
+Hotfix	            hotfix/	            hotfix/urgent-patch-on-user-dim	Emergency production fixes
+Refactor            refactor/	        refactor/optimize-order-etl-performance	Improving performance, code cleanup, restructuring
+Release	            release/	        release/v1.3-dwh-enhancements	Prepping for a batch release or data model rollout
+Chore/Maintenance	chore/	            chore/update-dag-schedule	Non-functional updates like schedules, configs
+Experiment	        experiment/	        experiment/snowflake-partition-test	Test new tools, approaches, models
+
+Examples for Data Engineering Context
+feature/add-customer-dimension
+feature/azure-adf-integration
+bugfix/fix-null-values-in-sales-fact
+hotfix/remove-duplicate-orders-prod
+refactor/rename-columns-dim-product
+release/v2.0-data-quality-improvements
+chore/update-powerbi-dashboard-links
+experiment/test-delta-lake-on-azure
+
+
+Recommended Rules
+Use lowercase, separated by -
+Keep branch names descriptive but concise
+Prefix consistently by type (feature/, bugfix/, release/ etc.)
+Avoid spaces or special characters
+For multi-word tasks, use hyphens not underscores or camelCase
+
+DE branching naming ideas:
+Use the following prefixes for branch names:
+- `feature/` — New data pipelines, scripts, dashboards, data models
+- `bugfix/` — Fixes to data issues, ETL errors, broken reports
+- `hotfix/` — Urgent production data fixes
+- `refactor/` — Code or pipeline optimizations, structure improvements
+- `release/` — Release preparations for data model or system changes
+- `chore/` — Maintenance updates, config changes, documentation
+- `experiment/` — Testing new tools, models, approaches
