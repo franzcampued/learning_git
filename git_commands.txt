@@ -201,3 +201,14 @@ remote
 --> git push origin --delete [brand_name e.g feature/data-cleaning]
 
 Keep your repo clean by removing finished branches.
+
+
+----------
+
+Best Practices
+-Use branches per feature/bugfix
+-Pull the latest main before starting a new branch
+-Write clear commit messages
+-Keep main always deployable/working
+-Review PRs carefully before merging
+-Clean up old branches
