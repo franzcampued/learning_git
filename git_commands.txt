@@ -161,9 +161,6 @@ Always work on a separate branch — keeps your main branch clean.
 7. Push your branch to GitHub
 --> git push origin [branch e.g feature/data-cleaning]
 
-In any case the branch does not exist in the remote repo
---> git push --set-upstream origin [branch e.g feature/data-cleaning]
-
 Now your branch is available remotely too.
 
 8. Create a Pull Request (PR)
@@ -212,3 +209,87 @@ Best Practices
 -Keep main always deployable/working
 -Review PRs carefully before merging
 -Clean up old branches
+
+
+----------
+What is Forking in GitHub?
+Forking is when you copy someone else’s GitHub repository into your own GitHub account.
+
+It creates a separate, independent copy of the repo for you to modify without affecting the original.
+
+Example setup:
+
+Original Owner	            You (Forked Repo)
+github.com/alice/project	github.com/you/project
+
+You clicked "Fork" on GitHub, and now you have your own copy.
+
+Why Fork a Repository? — Use Cases
+1. Contributing to Open Source
+You fork an open-source repo → make changes → send a pull request to the original repo.
+
+2. Experiment Safely
+Test features or changes without risking the original project.
+
+3. Private Modifications
+Use a public project base, but tweak it for your private needs.
+
+What is origin and upstream in Git?
+When you clone a repo, Git tracks where it came from. That remote URL is called origin by default.
+
+When you're working with a fork:
+>origin → it's your forked repo
+>upstream → it's the original repo you forked from
+
+Example Setup:
+origin	https://github.com/yourusername/project.git	(Your copy of the repository)
+upstream	https://github.com/original-owner/project.git	(The original repository you forked)
+
+Forking Workflow
+1. Fork the Repo on GitHub
+Go to the original repo → click Fork → choose your account.
+
+2. Clone Your Fork Locally
+git clone https://github.com/yourusername/project.git
+
+3. Add the Original Repo as upstream
+git remote add upstream https://github.com/original-owner/project.git
+
+>Check remotes:
+git remote -v
+
+>Expected output:
+origin    https://github.com/yourusername/project.git (fetch)
+origin    https://github.com/yourusername/project.git (push)
+upstream  https://github.com/original-owner/project.git (fetch)
+upstream  https://github.com/original-owner/project.git (push)
+
+4. Fetch and Merge Changes from Upstream
+
+>Fetch latest from upstream:
+git fetch upstream
+
+>Merge upstream changes into your local main:
+git checkout main
+git merge upstream/main
+
+>Push your updated main to your fork:
+git push origin main
+
+----------
+Why Bother with upstream?
+When you fork, your repo becomes independent.
+But the original repo might still get updates — so you can use upstream to keep your fork in sync.
+
+Without it, your fork would fall behind and cause conflicts.
+
+--------------
+Typical Forking Workflow (Contributing to Open Source)
+Fork the repo
+Clone your fork
+Add the original repo as upstream
+Create a new branch
+Make changes, commit
+Push to your fork
+Create a Pull Request to original repo
+Sync your fork with upstream regularly
