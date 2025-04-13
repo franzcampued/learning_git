@@ -362,3 +362,50 @@ Use the following prefixes for branch names:
 - `release/` — Release preparations for data model or system changes
 - `chore/` — Maintenance updates, config changes, documentation
 - `experiment/` — Testing new tools, models, approaches
+
+-----------
+What is a Merge Conflict?
+A merge conflict happens when Git can’t automatically decide how to merge changes because two branches modified the same line(s) of code or data differently — 
+or when a file has been deleted/renamed in one branch and modified in the other.
+
+Common Causes of Merge Conflicts
+1️. Parallel Changes to the Same File and Same Line
+Two branches edit the same line(s) in a file.
+
+Example:
+feature-a updates a SQL query’s filter.
+feature-b also updates that same query filter differently.
+
+2️. One Branch Deletes a File, Another Modifies It
+If feature-a deletes a pipeline config file, and feature-b modifies it — conflict.
+
+3️. Branch Divergence (Stale Branches)
+You created two branches:
+Branch A: Merges first.
+Branch B: Still working with the old state of main (before Branch A merged).
+When Branch B is merged — it’ll likely cause conflicts if it touched anything Branch A already changed.
+
+4️. Conflicting Renames
+Both branches rename the same file to different names.
+
+5️. Binary File Conflicts
+Two branches make changes to the same image, diagram, or binary — can’t auto-merge.
+
+
+Best Practices to Avoid Merge Conflicts
+1. Regularly sync your branch with main
+-->git fetch origin
+-->git merge origin/main
+
+this gives chance to review changes before merging.
+
+2. Keep branches small and focused
+→ Short-lived feature branches reduce conflicts.
+3. Communicate with your team
+→ Let others know what files or pipelines you’re modifying.
+4. Use clear branch naming conventions
+→ Makes it obvious what work is happening where.
+
+-----------
+YT resources:
+https://www.youtube.com/watch?v=mJ-qvsxPHpY
